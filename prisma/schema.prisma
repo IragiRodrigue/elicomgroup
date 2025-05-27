@@ -1,0 +1,168 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL") // URL dans .env : mysql://user:pass@host:port/db
+}
+
+model Company {
+  id                String              @id @default(cuid())
+  name              String
+  slug              String              @unique
+  logo              String?
+  primaryColor      String              @default("#2563eb") // Default blue
+  secondaryColor    String              @default("#3b82f6")
+  accentColor       String              @default("#f97316")
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  
+  // Relations
+  contents          CompanyContent[]
+  sections          CompanySectionLayout[]
+  menus             Menu[]
+  users             UserCompany[]
+}
+
+model CompanyContent {
+  id                String              @id @default(cuid())
+  companyId         String
+  languageCode      String              @default("fr")
+  title             String
+  description       String?
+  metaTitle         String?
+  metaDescription   String?
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  
+  // Relations
+  company           Company             @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@unique([companyId, languageCode])
+}
+
+model Section {
+  id                String              @id @default(cuid())
+  name              String
+  slug              String              @unique
+  description       String?
+  icon              String?
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  
+  // Relations
+  layouts           CompanySectionLayout[]
+  contents          SectionContent[]
+}
+
+model SectionContent {
+  id                String              @id @default(cuid())
+  sectionId         String
+  languageCode      String              @default("fr")
+  title             String
+  subtitle          String?
+  content           String?             @db.Text
+  imageUrl          String?
+  videoUrl          String?
+  linkUrl           String?
+  linkText          String?
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  
+  // Relations
+  section           Section             @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+
+  @@unique([sectionId, languageCode])
+}
+
+model CompanySectionLayout {
+  id                String              @id @default(cuid())
+  companyId         String
+  sectionId         String
+  order             Int
+  isActive          Boolean             @default(true)
+  customClass       String?
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  
+  // Relations
+  company           Company             @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  section           Section             @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+
+  @@unique([companyId, sectionId])
+}
+
+model Menu {
+  id                String              @id @default(cuid())
+  companyId         String?
+  parentId          String?
+  name              String
+  slug              String
+  order             Int
+  path              String?
+  isExternal        Boolean             @default(false)
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  
+  // Relations
+  company           Company?            @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  parent            Menu?               @relation("MenuToMenu", fields: [parentId], references: [id], onDelete: SetNull)
+  children          Menu[]              @relation("MenuToMenu")
+  contents          MenuContent[]
+
+  @@unique([companyId, slug])
+}
+
+model MenuContent {
+  id                String              @id @default(cuid())
+  menuId            String
+  languageCode      String              @default("fr")
+  title             String
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  
+  // Relations
+  menu              Menu                @relation(fields: [menuId], references: [id], onDelete: Cascade)
+
+  @@unique([menuId, languageCode])
+}
+
+model User {
+  id                String              @id @default(cuid())
+  email             String              @unique
+  name              String?
+  password          String
+  role              UserRole            @default(USER)
+  isActive          Boolean             @default(true)
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  
+  // Relations
+  companies         UserCompany[]
+}
+
+model UserCompany {
+  id                String              @id @default(cuid())
+  userId            String
+  companyId         String
+  role              UserRole            @default(USER)
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  
+  // Relations
+  user              User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  company           Company             @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, companyId])
+}
+
+enum UserRole {
+  SUPER_ADMIN
+  ADMIN
+  EDITOR
+  USER
+}

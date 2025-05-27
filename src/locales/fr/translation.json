@@ -1,0 +1,104 @@
+{
+  "common": {
+    "group": "Groupe",
+    "search": "Rechercher",
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "admin": "Administration",
+    "profile": "Profil",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "create": "Créer",
+    "submit": "Soumettre",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "loading": "Chargement..."
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "services": "Services",
+    "contact": "Contact",
+    "team": "Équipe",
+    "partners": "Partenaires",
+    "testimonials": "Témoignages",
+    "news": "Actualités",
+    "projects": "Projets",
+    "values": "Valeurs",
+    "certifications": "Certifications"
+  },
+  "footer": {
+    "rights": "Tous droits réservés",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "contact": "Contactez-nous"
+  },
+  "home": {
+    "welcome": "Bienvenue chez Groupe ELICOM",
+    "description": "Leader dans divers secteurs d'activité depuis 1995",
+    "ourCompanies": "Nos sociétés",
+    "learnMore": "En savoir plus",
+    "discoverCompanies": "Découvrez nos sociétés"
+  },
+  "company": {
+    "details": "Détails de la société",
+    "about": "À propos",
+    "mission": "Notre mission",
+    "vision": "Notre vision",
+    "values": "Nos valeurs",
+    "team": "Notre équipe",
+    "services": "Nos services",
+    "projects": "Nos projets",
+    "contactUs": "Contactez-nous"
+  },
+  "admin": {
+    "dashboard": "Tableau de bord",
+    "companies": "Sociétés",
+    "sections": "Sections",
+    "users": "Utilisateurs",
+    "content": "Contenu",
+    "settings": "Paramètres",
+    "newCompany": "Nouvelle société",
+    "editCompany": "Modifier la société",
+    "newSection": "Nouvelle section",
+    "editSection": "Modifier la section",
+    "newUser": "Nouvel utilisateur",
+    "editUser": "Modifier l'utilisateur",
+    "companySettings": "Paramètres de la société",
+    "generalSettings": "Paramètres généraux"
+  },
+  "auth": {
+    "login": "Connexion",
+    "register": "Inscription",
+    "forgotPassword": "Mot de passe oublié?",
+    "resetPassword": "Réinitialiser le mot de passe",
+    "email": "Email",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "name": "Nom complet",
+    "role": "Rôle",
+    "loginSuccess": "Connexion réussie!",
+    "loginError": "Échec de la connexion. Veuillez vérifier vos informations."
+  },
+  "validation": {
+    "required": "Ce champ est requis",
+    "email": "Veuillez entrer une adresse email valide",
+    "min": "Ce champ doit contenir au moins {{count}} caractères",
+    "max": "Ce champ ne doit pas dépasser {{count}} caractères",
+    "passwordMatch": "Les mots de passe ne correspondent pas",
+    "unique": "Cette valeur existe déjà"
+  },
+  "notifications": {
+    "success": "Succès!",
+    "error": "Erreur!",
+    "warning": "Attention!",
+    "info": "Information",
+    "saved": "Enregistré avec succès",
+    "deleted": "Supprimé avec succès",
+    "created": "Créé avec succès",
+    "updated": "Mis à jour avec succès"
+  }
+}

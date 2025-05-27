@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #2563eb;
+    --color-primary-light: #60a5fa;
+    --color-secondary: #3b82f6;
+    --color-secondary-light: #93c5fd;
+    --color-accent: #f97316;
+    --color-accent-light: #fdba74;
+    --color-background: #ffffff;
+    --color-foreground: #f9fafb;
+    --color-text: #111827;
+    --color-text-muted: #6b7280;
+    --color-border: #e5e7eb;
+  }
+
+  .dark {
+    --color-primary: #3b82f6;
+    --color-primary-light: #60a5fa;
+    --color-secondary: #4b5563;
+    --color-secondary-light: #9ca3af;
+    --color-accent: #f97316;
+    --color-accent-light: #fdba74;
+    --color-background: #111827;
+    --color-foreground: #1f2937;
+    --color-text: #f9fafb;
+    --color-text-muted: #9ca3af;
+    --color-border: #374151;
+  }
+}
+
+@layer components {
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+  
+  .bg-secondary {
+    background-color: var(--color-secondary);
+  }
+  
+  .bg-accent {
+    background-color: var(--color-accent);
+  }
+  
+  .text-primary {
+    color: var(--color-primary);
+  }
+  
+  .text-secondary {
+    color: var(--color-secondary);
+  }
+  
+  .text-accent {
+    color: var(--color-accent);
+  }
+  
+  .dark .text-primary-light {
+    color: var(--color-primary-light);
+  }
+  
+  .dark .text-secondary-light {
+    color: var(--color-secondary-light);
+  }
+  
+  .dark .text-accent-light {
+    color: var(--color-accent-light);
+  }
+  
+  .border-primary {
+    border-color: var(--color-primary);
+  }
+  
+  .border-secondary {
+    border-color: var(--color-secondary);
+  }
+  
+  .border-accent {
+    border-color: var(--color-accent);
+  }
+  
+  .focus\:ring-primary:focus {
+    --tw-ring-color: var(--color-primary);
+  }
+  
+  .focus\:border-primary:focus {
+    border-color: var(--color-primary);
+  }
+}

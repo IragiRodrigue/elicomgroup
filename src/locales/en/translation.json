@@ -1,0 +1,104 @@
+{
+  "common": {
+    "group": "Group",
+    "search": "Search",
+    "login": "Login",
+    "logout": "Logout",
+    "admin": "Admin",
+    "profile": "Profile",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "submit": "Submit",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "loading": "Loading..."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "team": "Team",
+    "partners": "Partners",
+    "testimonials": "Testimonials",
+    "news": "News",
+    "projects": "Projects",
+    "values": "Values",
+    "certifications": "Certifications"
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "contact": "Contact Us"
+  },
+  "home": {
+    "welcome": "Welcome to ELICOM Group",
+    "description": "Leading in various sectors since 1995",
+    "ourCompanies": "Our Companies",
+    "learnMore": "Learn More",
+    "discoverCompanies": "Discover our companies"
+  },
+  "company": {
+    "details": "Company Details",
+    "about": "About Us",
+    "mission": "Our Mission",
+    "vision": "Our Vision",
+    "values": "Our Values",
+    "team": "Our Team",
+    "services": "Our Services",
+    "projects": "Our Projects",
+    "contactUs": "Contact Us"
+  },
+  "admin": {
+    "dashboard": "Dashboard",
+    "companies": "Companies",
+    "sections": "Sections",
+    "users": "Users",
+    "content": "Content",
+    "settings": "Settings",
+    "newCompany": "New Company",
+    "editCompany": "Edit Company",
+    "newSection": "New Section",
+    "editSection": "Edit Section",
+    "newUser": "New User",
+    "editUser": "Edit User",
+    "companySettings": "Company Settings",
+    "generalSettings": "General Settings"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "forgotPassword": "Forgot Password?",
+    "resetPassword": "Reset Password",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "name": "Full Name",
+    "role": "Role",
+    "loginSuccess": "Login successful!",
+    "loginError": "Login failed. Please check your credentials."
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "min": "This field must be at least {{count}} characters",
+    "max": "This field must not exceed {{count}} characters",
+    "passwordMatch": "Passwords do not match",
+    "unique": "This value already exists"
+  },
+  "notifications": {
+    "success": "Success!",
+    "error": "Error!",
+    "warning": "Warning!",
+    "info": "Information",
+    "saved": "Saved successfully",
+    "deleted": "Deleted successfully",
+    "created": "Created successfully",
+    "updated": "Updated successfully"
+  }
+}
