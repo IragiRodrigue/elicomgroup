@@ -108,6 +108,7 @@ const mockCompanies = [
   }
 ];
 
+
 // Dynamically import Lucide icons
 const importIcon = async (iconName: string) => {
   try {

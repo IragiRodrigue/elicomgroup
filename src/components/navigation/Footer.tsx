@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
@@ -6,6 +6,28 @@ import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'luc
 const Footer: React.FC = () => {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
+
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleMenuClick = (href: string) => {
+    setIsMenuOpen(false);
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  
+  
 
   return (
     <footer className="bg-gray-900 text-white">
