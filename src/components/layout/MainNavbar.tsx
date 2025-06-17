@@ -6,11 +6,17 @@ import { twMerge } from 'tailwind-merge';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../../contexts/ThemeContext';
 
+// Import company-specific headers
+import TicHeader from '../headers/TicHeader';
+import ImprimerieHeader from '../headers/ImprimerieHeader';
+import CooperativeHeader from '../headers/CooperativeHeader';
+import SokomaxHeader from '../headers/SokomaxHeader';
+
 const COMPANIES = [
-  { id: '1', name: 'Elicom TIC', slug: 'tic', primaryColor: '#6b21a8' },
+  { id: '4', name: 'Elicom TIC', slug: 'tic', primaryColor: '#6b21a8' },
   { id: '2', name: 'Elicom Coopérative', slug: 'cooperative', primaryColor: '#166534' },
-  { id: '3', name: 'Elicom Imprimerie', slug: 'imprimerie', primaryColor: '#1e3a8a' },
-  { id: '4', name: 'Sokomax', slug: 'sokomax', primaryColor: '#991b1b' },
+  { id: '1', name: 'Elicom Imprimerie', slug: 'imprimerie', primaryColor: '#1e3a8a' },
+  { id: '3', name: 'Sokomax', slug: 'sokomax', primaryColor: '#991b1b' },
 ];
 
 const getContrastColor = (hex: string) => {
@@ -54,6 +60,43 @@ const MainNavbar = () => {
     setSelectedCompany(company || null);
   }, [location.pathname]);
 
+  // Render company-specific headers
+  if (selectedCompany) {
+    switch (selectedCompany.slug) {
+      case 'tic':
+        return (
+          <>
+            <AddressBar />
+            <TicHeader />
+          </>
+        );
+      case 'imprimerie':
+        return (
+          <>
+            <AddressBar />
+            <ImprimerieHeader />
+          </>
+        );
+      case 'cooperative':
+        return (
+          <>
+            <AddressBar />
+            <CooperativeHeader />
+          </>
+        );
+      case 'sokomax':
+        return (
+          <>
+            <AddressBar />
+            <SokomaxHeader />
+          </>
+        );
+      default:
+        break;
+    }
+  }
+
+  // Default header for main group page
   const companyMenus = useMemo(() => {
     if (!selectedCompany) return [];
     return [
@@ -77,8 +120,6 @@ const MainNavbar = () => {
       : 'bg-transparent');
   }, [isScrolled, selectedCompany, theme]);
 
-
-
   const textColor = useMemo(() => {
     if (selectedCompany) return getContrastColor(selectedCompany.primaryColor);
     return theme === 'dark' ? '#E2E8F0' : '#1A202C';
@@ -100,7 +141,7 @@ const MainNavbar = () => {
           </Link>
 
           <div className="hidden md:flex items-center gap-6">
-            {selectedCompany ? <></> : <> {COMPANIES.map(company => (
+            {selectedCompany ? <></>: <> {COMPANIES.map(company => (
               <Link
                 key={company.id}
                 to={`/company/${company.slug}`}
@@ -113,8 +154,7 @@ const MainNavbar = () => {
               >
                 {company.name}
               </Link>
-            ))}</>}
-
+            ))}</> }
 
             {selectedCompany && (
               <div className="flex items-center gap-5  border-opacity-30">
@@ -151,7 +191,7 @@ const MainNavbar = () => {
               exit={{ opacity: 0, y: -20 }}
               className="md:hidden fixed top-[7rem] left-4 right-4 z-40 bg-white dark:bg-gray-800 rounded-xl shadow-xl p-4"
             >
-              {selectedCompany ? <></> :
+              {selectedCompany ? <></>:
                 <div>
                   {COMPANIES.map(company => (
                     <Link
