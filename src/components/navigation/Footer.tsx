@@ -1,33 +1,54 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 
-const Footer: React.FC = () => {
-  const { t } = useTranslation();
-  const currentYear = new Date().getFullYear();
+// Import company-specific footers
+import TicFooter from '../footers/TicFooter';
+import ImprimerieFooter from '../footers/ImprimerieFooter';
+import CooperativeFooter from '../footers/CooperativeFooter';
+import SokomaxFooter from '../footers/SokomaxFooter';
 
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const COMPANIES = [
+  { id: '1', name: 'Elicom TIC', slug: 'tic', primaryColor: '#6b21a8' },
+  { id: '2', name: 'Elicom Imprimerie', slug: 'imprimerie', primaryColor: '#1e3a8a' },
+  { id: '3', name: 'Elicom Coopérative', slug: 'cooperative', primaryColor: '#166534' },
+  { id: '4', name: 'Sokomax', slug: 'sokomax', primaryColor: '#991b1b' },
+];
+
+const Footer: React.FC = () => {
+  const location = useLocation();
+  const [selectedCompany, setSelectedCompany] = useState<any>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const slug = location.pathname.split('/')[2];
+    const company = COMPANIES.find(c => c.slug === slug);
+    setSelectedCompany(company || null);
+  }, [location.pathname]);
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const handleMenuClick = (href: string) => {
-    setIsMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  // Render company-specific footers
+  if (selectedCompany) {
+    switch (selectedCompany.slug) {
+      case 'tic':
+        return <TicFooter />;
+      case 'imprimerie':
+        return <ImprimerieFooter />;
+      case 'cooperative':
+        return <CooperativeFooter />;
+      case 'sokomax':
+        return <SokomaxFooter />;
+      default:
+        return <DefaultFooter />;
     }
-  };
-  
-  
+  }
+
+  // Default footer for main group page
+  return <DefaultFooter />;
+};
+
+const DefaultFooter = () => {
+  const { t } = useTranslation();
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-gray-900 text-white">

@@ -17,10 +17,7 @@ const COMPANIES = [
 ];
 
 const Footer: React.FC = () => {
-  const { t } = useTranslation();
   const location = useLocation();
-  const currentYear = new Date().getFullYear();
-
   const [selectedCompany, setSelectedCompany] = useState<any>(null);
 
   useEffect(() => {
@@ -41,11 +38,18 @@ const Footer: React.FC = () => {
       case 'sokomax':
         return <SokomaxFooter />;
       default:
-        break;
+        return <DefaultFooter />;
     }
   }
 
   // Default footer for main group page
+  return <DefaultFooter />;
+};
+
+const DefaultFooter = () => {
+  const { t } = useTranslation();
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-12">

@@ -23,10 +23,10 @@ const TicHeader = () => {
   }, []);
 
   const companyMenus = [
-    { id: 'about', name: t('nav.about'), path: `/company/${company.slug}/about` },
-    { id: 'services', name: t('nav.services'), path: `/company/${company.slug}/services` },
-    { id: 'team', name: t('nav.team'), path: `/company/${company.slug}/team` },
-    { id: 'contact', name: t('nav.contact'), path: `/company/${company.slug}/contact` },
+    { id: 'about', name: t('nav.about'), path: `#apropos` },
+    { id: 'services', name: t('nav.services'), path: `#services` },
+    { id: 'team', name: t('nav.team'), path: `#team` },
+    { id: 'contact', name: t('nav.contact'), path: `#contact` },
   ];
 
   const toggleLanguage = () => i18n.changeLanguage(i18n.language === 'fr' ? 'en' : 'fr');
